@@ -12,54 +12,41 @@
     }
   },
   {
-    "dest": "build/_flatpak_deps/asio-src",
+    "dest": "build/_flatpak_deps/vma-src",
     "disable-shallow-clone": false,
-    "tag": "asio-1-30-2",
-    "commit": "12e0ce9e0500bf0f247dbd1ae894272656456079",
+    "tag": "v3.4.0",
+    "commit": "3aa921224c154a0d2c43912bc88e1c42ce1f7607",
     "type": "git",
-    "url": "https://github.com/chriskohlhoff/asio.git",
+    "url": "https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git",
     "x-cmake": {
-      "name": "asio",
-      "exclude_from_all": true,
-      "find_package_args": "GLOBAL"
-    }
-  },
-  {
-    "dest": "build/_flatpak_deps/pegtl-src",
-    "disable-shallow-clone": false,
-    "tag": "3.2.8",
-    "commit": "be527327653e94b02e711f7eff59285ad13e1db0",
-    "type": "git",
-    "url": "https://github.com/taocpp/PEGTL.git",
-    "x-cmake": {
-      "name": "pegtl",
-      "exclude_from_all": true,
-      "find_package_args": "GLOBAL"
-    }
-  },
-  {
-    "dest": "build/_flatpak_deps/nlohmann_json-src",
-    "type": "archive",
-    "url": "https://github.com/nlohmann/json/archive/refs/tags/v3.12.0.tar.gz",
-    "sha256": "4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187",
-    "x-cmake": {
-      "name": "nlohmann_json",
+      "name": "vma",
       "exclude_from_all": true
     }
   },
   {
-    "commit": "629bda81eb98856ca023f0f87f57dde8d22b4823",
+    "commit": "bf5f855ddb1b84390306e0913b89149ac72a3510",
     "dest": "build/_flatpak_deps/rstd-src",
     "disable-shallow-clone": true,
     "type": "git",
-    "url": "https://github.com/hypengw/rstd.git",
+    "url": "https://github.com/litocpp/rstd.git",
     "x-cmake": {
       "name": "rstd",
       "exclude_from_all": true
     }
   },
   {
-    "commit": "404868aa2aa4481e262f25d8f7d053f42b61b7b8",
+    "commit": "8fcfd34b43a13ade515f029b0b4209bd3684645f",
+    "dest": "build/_flatpak_deps/vvk-src",
+    "disable-shallow-clone": true,
+    "type": "git",
+    "url": "https://github.com/litocpp/vvk.git",
+    "x-cmake": {
+      "name": "vvk",
+      "exclude_from_all": true
+    }
+  },
+  {
+    "commit": "37d3c588fb1307dd6c40fbc8681790b45eb5402a",
     "dest": "build/_flatpak_deps/ncrequest-src",
     "disable-shallow-clone": true,
     "type": "git",
@@ -70,7 +57,7 @@
     }
   },
   {
-    "commit": "aab112235e4da7e03c233793a9d612507f0e6355",
+    "commit": "e49fc62fdc1b57abeabb643daa6ebab96fb3821f",
     "dest": "build/_flatpak_deps/wavsen-src",
     "disable-shallow-clone": true,
     "type": "git",
@@ -81,7 +68,7 @@
     }
   },
   {
-    "commit": "a2c77e3db1888f6b907e9b06bcb0c4aaf8a7a573",
+    "commit": "628f580b60f8e7195447ec9e27dae5cce5b0fcbc",
     "dest": "build/_flatpak_deps/qml_material-src",
     "disable-shallow-clone": true,
     "type": "git",
@@ -92,7 +79,7 @@
     }
   },
   {
-    "commit": "d02d9a7bfed546dfb7f87a5627b1c9e8f6fcc95a",
+    "commit": "2106172c8c55693248661f5ddfc0623ff489285d",
     "dest": "build/_flatpak_deps/QExtra-src",
     "disable-shallow-clone": true,
     "type": "git",
