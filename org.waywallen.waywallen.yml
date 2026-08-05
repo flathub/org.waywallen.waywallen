@@ -97,7 +97,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/waywallen/waywallen.git
-        commit: f162fd8d19f5344b4e1ba81050b13ec077f2677e
+        commit: ccd628bf909ec82422f0b8385dd7e177ba5adf61
       - ./cargo-sources.json
       - ./waywallen-deps.json
 

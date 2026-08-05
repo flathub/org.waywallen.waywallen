@@ -24,7 +24,7 @@
     }
   },
   {
-    "commit": "bf5f855ddb1b84390306e0913b89149ac72a3510",
+    "commit": "c697a4b08cbb9183f78c18915f59c8f72dac5d14",
     "dest": "build/_flatpak_deps/rstd-src",
     "disable-shallow-clone": true,
     "type": "git",
@@ -35,7 +35,7 @@
     }
   },
   {
-    "commit": "8fcfd34b43a13ade515f029b0b4209bd3684645f",
+    "commit": "b6b1cc66e3cce61307f71c5479b3a774555d3c13",
     "dest": "build/_flatpak_deps/vvk-src",
     "disable-shallow-clone": true,
     "type": "git",
@@ -46,7 +46,7 @@
     }
   },
   {
-    "commit": "37d3c588fb1307dd6c40fbc8681790b45eb5402a",
+    "commit": "8d703215bc9154618bc84d2c8517ff7b264c93f3",
     "dest": "build/_flatpak_deps/ncrequest-src",
     "disable-shallow-clone": true,
     "type": "git",
@@ -68,7 +68,7 @@
     }
   },
   {
-    "commit": "628f580b60f8e7195447ec9e27dae5cce5b0fcbc",
+    "commit": "00cef02036d6de4b8d7017e786bbe970c09e8441",
     "dest": "build/_flatpak_deps/qml_material-src",
     "disable-shallow-clone": true,
     "type": "git",
@@ -79,7 +79,7 @@
     }
   },
   {
-    "commit": "2106172c8c55693248661f5ddfc0623ff489285d",
+    "commit": "37724d1fd44fc013e938652e2fcb25897be10e63",
     "dest": "build/_flatpak_deps/QExtra-src",
     "disable-shallow-clone": true,
     "type": "git",
