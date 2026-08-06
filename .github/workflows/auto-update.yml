@@ -1,0 +1,101 @@
+name: auto-update
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  GIT_USER_NAME: github-actions[bot]
+  GIT_USER_EMAIL: github-actions[bot]@users.noreply.github.com
+  FLATPAK_ID: org.waywallen.waywallen
+  FLATPAK_BUILDER_TOOLS_REF: 8b54d0a11348aeaf3393251aada2e3bed99d7254
+
+jobs:
+  flatpak-external-data-checker:
+    name: check update
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
+        with:
+          args: --edit-only ${{ env.FLATPAK_ID }}.yml
+
+      - name: Check updated
+        id: is-updated
+        run: |
+          if git diff --quiet -- "${FLATPAK_ID}.yml"; then
+            echo "updated=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "updated=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-python@v5
+        if: steps.is-updated.outputs.updated == 'true'
+        with:
+          python-version: "3.13"
+
+      - name: Regenerate source manifests
+        if: steps.is-updated.outputs.updated == 'true'
+        env:
+          UPSTREAM_DIR: ${{ runner.temp }}/waywallen
+          TOOLS_DIR: ${{ runner.temp }}/flatpak-builder-tools
+        run: |
+          python3 -m pip install \
+            "aiohttp>=3.9.5,<4" \
+            "PyYAML>=6.0.2,<7" \
+            "tomlkit>=0.13.3,<1"
+
+          source_commit="$(python3 - <<'PY'
+          import os
+          from pathlib import Path
+
+          import yaml
+
+          manifest = yaml.safe_load(Path(f"{os.environ['FLATPAK_ID']}.yml").read_text())
+          module = next(item for item in manifest["modules"] if item["name"] == "waywallen")
+          source = next(
+              item
+              for item in module["sources"]
+              if isinstance(item, dict)
+              and item.get("type") == "git"
+              and item.get("url") == "https://github.com/waywallen/waywallen.git"
+          )
+          print(source["commit"])
+          PY
+          )"
+
+          git init "$UPSTREAM_DIR"
+          git -C "$UPSTREAM_DIR" remote add origin https://github.com/waywallen/waywallen.git
+          git -C "$UPSTREAM_DIR" fetch --depth 1 origin "$source_commit"
+          git -C "$UPSTREAM_DIR" checkout --detach FETCH_HEAD
+
+          git init "$TOOLS_DIR"
+          git -C "$TOOLS_DIR" remote add origin https://github.com/flatpak/flatpak-builder-tools.git
+          git -C "$TOOLS_DIR" fetch --depth 1 origin "$FLATPAK_BUILDER_TOOLS_REF"
+          git -C "$TOOLS_DIR" checkout --detach FETCH_HEAD
+
+          cp "$UPSTREAM_DIR/deps.json" waywallen-deps.json
+          python3 "$TOOLS_DIR/cargo/flatpak-cargo-generator.py" \
+            "$UPSTREAM_DIR/Cargo.lock" \
+            -o cargo-sources.json
+
+      - name: Reset checker edits
+        run: git checkout -- "${FLATPAK_ID}.yml"
+
+      - name: Recheck and open PR
+        uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
+        env:
+          GIT_AUTHOR_NAME: ${{ env.GIT_USER_NAME }}
+          GIT_COMMITTER_NAME: ${{ env.GIT_USER_NAME }}
+          GIT_AUTHOR_EMAIL: ${{ env.GIT_USER_EMAIL }}
+          GIT_COMMITTER_EMAIL: ${{ env.GIT_USER_EMAIL }}
+          EMAIL: ${{ env.GIT_USER_EMAIL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: --update --never-fork ${{ env.FLATPAK_ID }}.yml

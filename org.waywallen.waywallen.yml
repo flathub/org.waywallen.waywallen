@@ -17,7 +17,6 @@ finish-args:
   - --filesystem=xdg-videos:ro
   - --filesystem=xdg-run/waywallen:create
   - --talk-name=org.kde.StatusNotifierWatcher
-  - --talk-name=org.mpris.MediaPlayer2.*
   - --filesystem=~/.steam
   - --filesystem=~/.local/share/Steam
   - --filesystem=~/.var/app/com.valvesoftware.Steam/data/Steam
@@ -97,7 +96,11 @@ modules:
     sources:
       - type: git
         url: https://github.com/waywallen/waywallen.git
-        commit: ccd628bf909ec82422f0b8385dd7e177ba5adf61
+        tag: v0.3.1
+        commit: 00a2e27b12341262e85a01e7c9c46564b3b70d32
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+          is-main-source: true
       - ./cargo-sources.json
       - ./waywallen-deps.json
-
