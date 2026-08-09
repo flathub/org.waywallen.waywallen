@@ -57,9 +57,9 @@ modules:
       - ln -s /app/lib/*-linux-gnu/*.so* /app/lib/
     sources:
       - type: git
-        url: https://code.qt.io/qt/qtgrpc.git
-        tag: 6.10.3
-        commit: a52195d96a9f257a37e3aee430f6cda121269a8b
+        url: https://github.com/qt/qtgrpc.git
+        tag: v6.11.1
+        commit: 246eb3e3f33bde5ae90bcc8fc1ee54b9381fc60a
 
   - name: spirv-tools
     buildsystem: cmake-ninja
@@ -96,8 +96,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/waywallen/waywallen.git
-        tag: v0.3.1
-        commit: 00a2e27b12341262e85a01e7c9c46564b3b70d32
+        tag: v0.3.2
+        commit: 3aaf8a8e06d2805b6d1fd72c544908457eff9309
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
