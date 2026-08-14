@@ -96,8 +96,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/waywallen/waywallen.git
-        tag: v0.3.3
-        commit: dc99becb8de700593800718eabe9c1d1986becee
+        tag: v0.3.4
+        commit: 0d35fc914cd1984d4ea63ecc4966fb3b352d165e
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
