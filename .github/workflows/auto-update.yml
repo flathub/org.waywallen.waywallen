@@ -45,30 +45,44 @@ jobs:
         env:
           UPSTREAM_DIR: ${{ runner.temp }}/waywallen
           TOOLS_DIR: ${{ runner.temp }}/flatpak-builder-tools
+          LITO_DIR: ${{ runner.temp }}/lito
         run: |
           python3 -m pip install \
             "aiohttp>=3.9.5,<4" \
             "PyYAML>=6.0.2,<7" \
             "tomlkit>=0.13.3,<1"
 
-          source_commit="$(python3 - <<'PY'
+          readarray -t manifest_sources < <(python3 - <<'PY'
           import os
           from pathlib import Path
 
           import yaml
 
           manifest = yaml.safe_load(Path(f"{os.environ['FLATPAK_ID']}.yml").read_text())
-          module = next(item for item in manifest["modules"] if item["name"] == "waywallen")
-          source = next(
+          waywallen = next(item for item in manifest["modules"] if item["name"] == "waywallen")
+          waywallen_source = next(
               item
-              for item in module["sources"]
+              for item in waywallen["sources"]
               if isinstance(item, dict)
               and item.get("type") == "git"
               and item.get("url") == "https://github.com/waywallen/waywallen.git"
           )
-          print(source["commit"])
+          lito = next(item for item in manifest["modules"] if item["name"] == "lito")
+          lito_source = next(
+              item
+              for item in lito["sources"]
+              if isinstance(item, dict)
+              and item.get("type") == "archive"
+              and "x86_64" in item.get("only-arches", [])
+          )
+          print(waywallen_source["commit"])
+          print(lito_source["url"])
+          print(lito_source["sha256"])
           PY
-          )"
+          )
+          source_commit="${manifest_sources[0]}"
+          lito_url="${manifest_sources[1]}"
+          lito_sha256="${manifest_sources[2]}"
 
           git init "$UPSTREAM_DIR"
           git -C "$UPSTREAM_DIR" remote add origin https://github.com/waywallen/waywallen.git
@@ -80,7 +94,19 @@ jobs:
           git -C "$TOOLS_DIR" fetch --depth 1 origin "$FLATPAK_BUILDER_TOOLS_REF"
           git -C "$TOOLS_DIR" checkout --detach FETCH_HEAD
 
-          cp "$UPSTREAM_DIR/deps.json" waywallen-deps.json
+          lito_archive="${RUNNER_TEMP}/lito.tar.gz"
+          mkdir -p "$LITO_DIR"
+          curl --fail --location --retry 3 "$lito_url" --output "$lito_archive"
+          printf '%s  %s\n' "$lito_sha256" "$lito_archive" | sha256sum --check -
+          tar --extract --gzip --file "$lito_archive" --directory "$LITO_DIR" --strip-components=1
+          "$LITO_DIR/bin/lito" --version
+
+          "$LITO_DIR/bin/lito" \
+            -C "$UPSTREAM_DIR" \
+            --no-config \
+            lock export \
+            --format flatpak-sources \
+            --output "$GITHUB_WORKSPACE/waywallen-lito.json"
           python3 "$TOOLS_DIR/cargo/flatpak-cargo-generator.py" \
             "$UPSTREAM_DIR/Cargo.lock" \
             -o cargo-sources.json

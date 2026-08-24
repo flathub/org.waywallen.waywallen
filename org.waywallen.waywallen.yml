@@ -76,31 +76,40 @@ modules:
     cleanup:
       - '*'
 
+  - name: lito
+    buildsystem: simple
+    build-commands:
+      - cp -a bin share /app/
+    sources:
+      - type: archive
+        url: https://github.com/litocpp/lito/releases/download/v0.6.1/lito-linux-x86_64.tar.gz
+        sha256: 2e1247634df8b684913302057d89eb1bdd0b5b1e3112608a9470c8af7c25f4c9
+        only-arches:
+          - x86_64
+      - type: archive
+        url: https://github.com/litocpp/lito/releases/download/v0.6.1/lito-linux-aarch64.tar.gz
+        sha256: bca1b253b7b4afb82ff86984ddb4395d37903e93da9dd93f0df291e884d23c18
+        only-arches:
+          - aarch64
+    cleanup:
+      - '*'
+
   - name: waywallen
-    buildsystem: cmake-ninja
+    buildsystem: simple
     build-options:
-      cflags: -Wp,-U_FORTIFY_SOURCE -Wp,-D_FORTIFY_SOURCE=0
-      cxxflags: -Wp,-U_FORTIFY_SOURCE -Wp,-D_FORTIFY_SOURCE=0
       append-path: /usr/lib/sdk/llvm22/bin:/usr/lib/sdk/rust-stable/bin
       prepend-ld-library-path: /usr/lib/sdk/llvm22/lib
       env:
         CARGO_HOME: /run/build/waywallen/cargo
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DQML_INSTALL_DIR=/app/lib/qml
-      - -DCMAKE_C_COMPILER=clang
-      - -DCMAKE_CXX_COMPILER=clang++
-      - -DCMAKE_LINKER=lld
-      - -DWAYWALLEN_CARGO_OFFLINE=ON
-      - -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=cmake/FetchDepsProvider.cmake
+    build-commands:
+      - lito install --profile relwithdebinfo --prefix /app --fetch-seed .lito/fetch-seed --offline
     sources:
       - type: git
         url: https://github.com/waywallen/waywallen.git
-        tag: v0.3.5
-        commit: f7baecd0dff84f1607be93184fc3bd19988365b9
+        commit: 381cdc3fe3891d262c9f2cdc9e73620e7a275ccf
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
           is-main-source: true
       - ./cargo-sources.json
-      - ./waywallen-deps.json
+      - ./waywallen-lito.json
