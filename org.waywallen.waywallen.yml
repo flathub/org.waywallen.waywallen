@@ -40,8 +40,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/protocolbuffers/protobuf.git
-        commit: 35cd01f9fe9afbeea38cc7b979a3b6bfcde82c03
-        tag: v35.1
+        commit: 3f17acbf7ffbda81db8be17505554c726e558bb2
+        tag: v36.0
         x-checker-data:
           type: json
           url: https://api.github.com/repos/protocolbuffers/protobuf/releases/latest
@@ -102,14 +102,16 @@ modules:
       env:
         CARGO_HOME: /run/build/waywallen/cargo
     build-commands:
-      - lito install --profile relwithdebinfo --prefix /app --fetch-seed .lito/fetch-seed --offline
+      - lito install --profile relwithdebinfo --prefix /app --fetch-seed .lito/fetch-seed
+        --offline
     sources:
       - type: git
         url: https://github.com/waywallen/waywallen.git
-        commit: 381cdc3fe3891d262c9f2cdc9e73620e7a275ccf
+        commit: 9540f8ca4168e523be9849dcf241c1c4fd75514a
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
           is-main-source: true
+        tag: v0.3.7
       - ./cargo-sources.json
       - ./waywallen-lito.json
