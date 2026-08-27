@@ -17,6 +17,7 @@ finish-args:
   - --filesystem=xdg-videos:ro
   - --filesystem=xdg-run/waywallen:create
   - --talk-name=org.kde.StatusNotifierWatcher
+  - --system-talk-name=org.freedesktop.login1
   - --filesystem=~/.steam
   - --filesystem=~/.local/share/Steam
   - --filesystem=~/.var/app/com.valvesoftware.Steam/data/Steam
