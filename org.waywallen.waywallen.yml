@@ -40,8 +40,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/protocolbuffers/protobuf.git
-        commit: 3f17acbf7ffbda81db8be17505554c726e558bb2
-        tag: v36.0
+        commit: 35cd01f9fe9afbeea38cc7b979a3b6bfcde82c03
+        tag: v35.1
         x-checker-data:
           type: json
           url: https://api.github.com/repos/protocolbuffers/protobuf/releases/latest
@@ -82,15 +82,27 @@ modules:
       - cp -a bin share /app/
     sources:
       - type: archive
-        url: https://github.com/litocpp/lito/releases/download/v0.6.1/lito-linux-x86_64.tar.gz
-        sha256: 2e1247634df8b684913302057d89eb1bdd0b5b1e3112608a9470c8af7c25f4c9
+        url: https://github.com/litocpp/lito/releases/download/v0.7.1/lito-v0.7.1-linux-x86_64.tar.gz
+        sha256: 2987265fc8a0fcbe3bc84cad9501441349b25bfd64ef17dc024591caf079cb6a
         only-arches:
           - x86_64
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/litocpp/lito/releases/latest
+          timestamp-query: .published_at
+          version-query: .tag_name | sub("^[vV]"; "")
+          url-template: https://github.com/litocpp/lito/releases/download/v$version/lito-v$version-linux-x86_64.tar.gz
       - type: archive
-        url: https://github.com/litocpp/lito/releases/download/v0.6.1/lito-linux-aarch64.tar.gz
-        sha256: bca1b253b7b4afb82ff86984ddb4395d37903e93da9dd93f0df291e884d23c18
+        url: https://github.com/litocpp/lito/releases/download/v0.7.1/lito-v0.7.1-linux-aarch64.tar.gz
+        sha256: c2aee1c388dcbfa95e5b9018dfa5d2104a81468037a8bcaef1fc14acb6673642
         only-arches:
           - aarch64
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/litocpp/lito/releases/latest
+          timestamp-query: .published_at
+          version-query: .tag_name | sub("^[vV]"; "")
+          url-template: https://github.com/litocpp/lito/releases/download/v$version/lito-v$version-linux-aarch64.tar.gz
     cleanup:
       - '*'
 
@@ -102,16 +114,14 @@ modules:
       env:
         CARGO_HOME: /run/build/waywallen/cargo
     build-commands:
-      - lito install --profile relwithdebinfo --prefix /app --fetch-seed .lito/fetch-seed
-        --offline
+      - lito install --profile relwithdebinfo --prefix /app --source-bundle .lito/source-bundle --offline
     sources:
       - type: git
         url: https://github.com/waywallen/waywallen.git
-        commit: 9540f8ca4168e523be9849dcf241c1c4fd75514a
+        commit: 85502587702a7ac02f06e5f0bdfbcd3d98e12d20
+        tag: v0.3.8
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
           is-main-source: true
-        tag: v0.3.7
-      - ./cargo-sources.json
       - ./waywallen-lito.json

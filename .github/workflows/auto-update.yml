@@ -11,7 +11,6 @@ env:
   GIT_USER_NAME: github-actions[bot]
   GIT_USER_EMAIL: github-actions[bot]@users.noreply.github.com
   FLATPAK_ID: org.waywallen.waywallen
-  FLATPAK_BUILDER_TOOLS_REF: 8b54d0a11348aeaf3393251aada2e3bed99d7254
 
 jobs:
   flatpak-external-data-checker:
@@ -44,13 +43,9 @@ jobs:
         if: steps.is-updated.outputs.updated == 'true'
         env:
           UPSTREAM_DIR: ${{ runner.temp }}/waywallen
-          TOOLS_DIR: ${{ runner.temp }}/flatpak-builder-tools
           LITO_DIR: ${{ runner.temp }}/lito
         run: |
-          python3 -m pip install \
-            "aiohttp>=3.9.5,<4" \
-            "PyYAML>=6.0.2,<7" \
-            "tomlkit>=0.13.3,<1"
+          python3 -m pip install "PyYAML>=6.0.2,<7"
 
           readarray -t manifest_sources < <(python3 - <<'PY'
           import os
@@ -89,11 +84,6 @@ jobs:
           git -C "$UPSTREAM_DIR" fetch --depth 1 origin "$source_commit"
           git -C "$UPSTREAM_DIR" checkout --detach FETCH_HEAD
 
-          git init "$TOOLS_DIR"
-          git -C "$TOOLS_DIR" remote add origin https://github.com/flatpak/flatpak-builder-tools.git
-          git -C "$TOOLS_DIR" fetch --depth 1 origin "$FLATPAK_BUILDER_TOOLS_REF"
-          git -C "$TOOLS_DIR" checkout --detach FETCH_HEAD
-
           lito_archive="${RUNNER_TEMP}/lito.tar.gz"
           mkdir -p "$LITO_DIR"
           curl --fail --location --retry 3 "$lito_url" --output "$lito_archive"
@@ -106,10 +96,8 @@ jobs:
             --no-config \
             lock export \
             --format flatpak-sources \
+            --attach-cargo-lock Cargo.lock \
             --output "$GITHUB_WORKSPACE/waywallen-lito.json"
-          python3 "$TOOLS_DIR/cargo/flatpak-cargo-generator.py" \
-            "$UPSTREAM_DIR/Cargo.lock" \
-            -o cargo-sources.json
 
       - name: Reset checker edits
         run: git checkout -- "${FLATPAK_ID}.yml"
