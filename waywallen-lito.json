@@ -13,8 +13,8 @@
     "url": "https://github.com/hypengw/QExtra.git"
   },
   {
-    "commit": "841f23e41fe534e12f1ec87c5a97fabb692dfabd",
-    "dest": ".lito/source-bundle/v1/git/8282e686793d589ddcf5aa786b30d5e3963b2ec9dfb78b998df0c745c2c68dae",
+    "commit": "949e701bc994c8075f57048a0205be3d2fe38603",
+    "dest": ".lito/source-bundle/v1/git/22868346f8c1ba6bd6b2fb3c15f63548bc98dd42f6b4037a2ada6f4bcb435be2",
     "type": "git",
     "url": "https://github.com/hypengw/QmlMaterial.git"
   },
