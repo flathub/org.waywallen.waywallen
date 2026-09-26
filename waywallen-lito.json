@@ -13,8 +13,8 @@
     "url": "https://github.com/hypengw/QExtra.git"
   },
   {
-    "commit": "949e701bc994c8075f57048a0205be3d2fe38603",
-    "dest": ".lito/source-bundle/v1/git/22868346f8c1ba6bd6b2fb3c15f63548bc98dd42f6b4037a2ada6f4bcb435be2",
+    "commit": "d01f6363c99e2e23b5d7338b7d29ae918356b211",
+    "dest": ".lito/source-bundle/v1/git/358a53819370e936337e55dd58d42f7ced837ab2081dee7ba2d472e7ed8b1a15",
     "type": "git",
     "url": "https://github.com/hypengw/QmlMaterial.git"
   },
@@ -25,120 +25,114 @@
     "url": "https://github.com/hypengw/ncrequest.git"
   },
   {
-    "commit": "e9c4983bb8851eed0823e25ad277a7bb7f6250ac",
-    "dest": ".lito/source-bundle/v1/git/52b5ac045aea59dc2407a2dec133cc67e5c7d4f9cfc0a36b221921b38b3a7e71",
+    "commit": "529a01c632a28d57daaca2a3c8bd9fc6672df564",
+    "dest": ".lito/source-bundle/v1/git/27ee5d26c9450c3f9ff2f2d23911234ae5eea60b71d4e8c6a1b7fb874c52f35f",
     "type": "git",
     "url": "https://github.com/hypengw/wavsen.git"
   },
   {
-    "commit": "bd4848b3d6dc2cc57928e4405c3593b67322d6f8",
-    "dest": ".lito/source-bundle/v1/git/0072bcc5053a84e959a89e8cd3cc795b1aa49e95df859d2165d3418becd82e08",
+    "commit": "df0c6f2d1cce2051b4711d36067619eda7933683",
+    "dest": ".lito/source-bundle/v1/git/ad319b4842d72c8966304a0e28f930379540f0600a15be8fcda309e03af16e35",
     "type": "git",
     "url": "https://github.com/litocpp/luato.git"
   },
   {
-    "commit": "2761d59430d57945ac40f77c91eea445ab074fb3",
-    "dest": ".lito/source-bundle/v1/git/b8ddff4ad214328733c41c596a5b38223d911523ea2d7b3ca33cf779d9f3cc5d",
-    "type": "git",
-    "url": "https://github.com/litocpp/vvk.git"
+    "dest": ".lito/source-bundle/v1/registry/source",
+    "dest-filename": "rstd-alloc-0.1.5-8e3634daa9ed08b2.tar.zst",
+    "sha256": "8e3634daa9ed08b2be3acd3e19cb9674474157f0a4a3f64f678ddf3d46fd53a4",
+    "type": "file",
+    "url": "https://registry.litocpp.org/packages/rstd-alloc/rstd-alloc-0.1.5.tar.zst"
   },
   {
     "dest": ".lito/source-bundle/v1/registry/source",
-    "dest-filename": "rstd-alloc-0.1.4-114acb01627b44d6.tar.zst",
-    "sha256": "114acb01627b44d604430cb8a8aba1b04b5daaa8074bf41de4d2530eb21856b2",
+    "dest-filename": "rstd-argparse-0.1.5-05a8a28f0486829c.tar.zst",
+    "sha256": "05a8a28f0486829cdb7f5959cb447b09e2af0587a777b2944c06affd0be37215",
     "type": "file",
-    "url": "https://registry.litocpp.org/packages/rstd-alloc/rstd-alloc-0.1.4.tar.zst"
+    "url": "https://registry.litocpp.org/packages/rstd-argparse/rstd-argparse-0.1.5.tar.zst"
   },
   {
     "dest": ".lito/source-bundle/v1/registry/source",
-    "dest-filename": "rstd-argparse-0.1.4-3a35df9991e6954a.tar.zst",
-    "sha256": "3a35df9991e6954a76829bfb31b34364b21548a605b0ff3d6f73f65065142e65",
+    "dest-filename": "rstd-basic-0.1.5-01370f952d2a9003.tar.zst",
+    "sha256": "01370f952d2a9003c858f644f6e3287e5bf6ac291ab53932f96d59838e481a21",
     "type": "file",
-    "url": "https://registry.litocpp.org/packages/rstd-argparse/rstd-argparse-0.1.4.tar.zst"
+    "url": "https://registry.litocpp.org/packages/rstd-basic/rstd-basic-0.1.5.tar.zst"
   },
   {
     "dest": ".lito/source-bundle/v1/registry/source",
-    "dest-filename": "rstd-basic-0.1.4-26bc1efc0eb5deef.tar.zst",
-    "sha256": "26bc1efc0eb5deef28becdce563fa8e7b79dce27f2f6926ffbf388c849e33a7c",
+    "dest-filename": "rstd-core-0.1.5-b50fb94012c1c396.tar.zst",
+    "sha256": "b50fb94012c1c396ba7dbd8913f64017d2638182a7f0e7ff54a5ac4b1dac91a7",
     "type": "file",
-    "url": "https://registry.litocpp.org/packages/rstd-basic/rstd-basic-0.1.4.tar.zst"
+    "url": "https://registry.litocpp.org/packages/rstd-core/rstd-core-0.1.5.tar.zst"
   },
   {
     "dest": ".lito/source-bundle/v1/registry/source",
-    "dest-filename": "rstd-core-0.1.4-ef43028851307160.tar.zst",
-    "sha256": "ef43028851307160347c2bc16d5b0ab98091de01ae1f0e928bae61682d6b96ed",
+    "dest-filename": "rstd-cppstd-0.1.5-ab24c7ca004f5588.tar.zst",
+    "sha256": "ab24c7ca004f558865f08d5941a264e039a16360374381a36072ae6fb5f644fa",
     "type": "file",
-    "url": "https://registry.litocpp.org/packages/rstd-core/rstd-core-0.1.4.tar.zst"
+    "url": "https://registry.litocpp.org/packages/rstd-cppstd/rstd-cppstd-0.1.5.tar.zst"
   },
   {
     "dest": ".lito/source-bundle/v1/registry/source",
-    "dest-filename": "rstd-cppstd-0.1.4-29cd23f00a5f5237.tar.zst",
-    "sha256": "29cd23f00a5f5237e4fbab459829b83a687aefba0fdb715dda9d6a84833ffb44",
+    "dest-filename": "rstd-dlopn-0.1.5-487b4f73f45e3657.tar.zst",
+    "sha256": "487b4f73f45e3657487999f957e8109e56feaee40e1be59419fe6d9c778c2c2f",
     "type": "file",
-    "url": "https://registry.litocpp.org/packages/rstd-cppstd/rstd-cppstd-0.1.4.tar.zst"
+    "url": "https://registry.litocpp.org/packages/rstd-dlopn/rstd-dlopn-0.1.5.tar.zst"
   },
   {
     "dest": ".lito/source-bundle/v1/registry/source",
-    "dest-filename": "rstd-dlopn-0.1.4-01afb7023f222ec6.tar.zst",
-    "sha256": "01afb7023f222ec65b489ed6a79b9da8f2137a08e78f719f64d465f3306d820d",
+    "dest-filename": "rstd-json-0.1.5-0ec51f0b70af31f4.tar.zst",
+    "sha256": "0ec51f0b70af31f4f654d4ab5fe2e829ac15957509b880cb3c30472c58a0574d",
     "type": "file",
-    "url": "https://registry.litocpp.org/packages/rstd-dlopn/rstd-dlopn-0.1.4.tar.zst"
+    "url": "https://registry.litocpp.org/packages/rstd-json/rstd-json-0.1.5.tar.zst"
   },
   {
     "dest": ".lito/source-bundle/v1/registry/source",
-    "dest-filename": "rstd-json-0.1.4-891d03ba9aabf32b.tar.zst",
-    "sha256": "891d03ba9aabf32b66a4b575d306a23d3905c7a80810263a4ae8057e1abb75e7",
+    "dest-filename": "rstd-log-0.1.5-16888a06489fbae2.tar.zst",
+    "sha256": "16888a06489fbae20852946ba95125a2f493e80f9b4e1ed7982afca9aae83672",
     "type": "file",
-    "url": "https://registry.litocpp.org/packages/rstd-json/rstd-json-0.1.4.tar.zst"
+    "url": "https://registry.litocpp.org/packages/rstd-log/rstd-log-0.1.5.tar.zst"
   },
   {
     "dest": ".lito/source-bundle/v1/registry/source",
-    "dest-filename": "rstd-log-0.1.4-4e12e8b2aadd0bbd.tar.zst",
-    "sha256": "4e12e8b2aadd0bbd2a12d616103029259694842706952fe76d9b6d057599d848",
+    "dest-filename": "rstd-parse-0.1.5-d827faa72b08c90c.tar.zst",
+    "sha256": "d827faa72b08c90c20ef1d27d69e34af70319cacd6b45926730dfa94afaaf891",
     "type": "file",
-    "url": "https://registry.litocpp.org/packages/rstd-log/rstd-log-0.1.4.tar.zst"
+    "url": "https://registry.litocpp.org/packages/rstd-parse/rstd-parse-0.1.5.tar.zst"
   },
   {
     "dest": ".lito/source-bundle/v1/registry/source",
-    "dest-filename": "rstd-parse-0.1.4-62d103033c25eb63.tar.zst",
-    "sha256": "62d103033c25eb635d1421bd1f4564bc6b43d0dac04a29982b9fdc511b37bced",
+    "dest-filename": "rstd-runtime-0.1.5-a5656da29c7df76f.tar.zst",
+    "sha256": "a5656da29c7df76f999859628e46cb304b3bfeaa221cf70c973063462b29da60",
     "type": "file",
-    "url": "https://registry.litocpp.org/packages/rstd-parse/rstd-parse-0.1.4.tar.zst"
+    "url": "https://registry.litocpp.org/packages/rstd-runtime/rstd-runtime-0.1.5.tar.zst"
   },
   {
     "dest": ".lito/source-bundle/v1/registry/source",
-    "dest-filename": "rstd-runtime-0.1.4-3140179d2945eb1c.tar.zst",
-    "sha256": "3140179d2945eb1c5d1ac198a16f5d9035d734a4d9d036f22e1528e1ef711566",
+    "dest-filename": "rstd-serde-0.1.5-0cb1bb19547b959f.tar.zst",
+    "sha256": "0cb1bb19547b959f05b4a07cc8a0cc8dcff9500cf2534ecb3478f5e1363d6840",
     "type": "file",
-    "url": "https://registry.litocpp.org/packages/rstd-runtime/rstd-runtime-0.1.4.tar.zst"
+    "url": "https://registry.litocpp.org/packages/rstd-serde/rstd-serde-0.1.5.tar.zst"
   },
   {
     "dest": ".lito/source-bundle/v1/registry/source",
-    "dest-filename": "rstd-serde-0.1.4-1c1d5f5c99a1b07e.tar.zst",
-    "sha256": "1c1d5f5c99a1b07e0f4095bfb1319c25b65992a7f3eb99dd601c94ada57e0afe",
+    "dest-filename": "rstd-std-0.1.5-077589ceadc2bdc3.tar.zst",
+    "sha256": "077589ceadc2bdc3e0833fcf45767d25949b8763326ac42ce6026ce3c3c50a2d",
     "type": "file",
-    "url": "https://registry.litocpp.org/packages/rstd-serde/rstd-serde-0.1.4.tar.zst"
+    "url": "https://registry.litocpp.org/packages/rstd-std/rstd-std-0.1.5.tar.zst"
   },
   {
     "dest": ".lito/source-bundle/v1/registry/source",
-    "dest-filename": "rstd-std-0.1.4-80d839e5fd530fb2.tar.zst",
-    "sha256": "80d839e5fd530fb2d0bb5ff117f9c9c0f85a6df34fcf5499bd0894a22fd79293",
+    "dest-filename": "rstd-toml-0.1.5-b4a8652ba84ad63a.tar.zst",
+    "sha256": "b4a8652ba84ad63aeefc6480e9ec73eacbe1938da3e386fa56bbb9ee549fc2c6",
     "type": "file",
-    "url": "https://registry.litocpp.org/packages/rstd-std/rstd-std-0.1.4.tar.zst"
+    "url": "https://registry.litocpp.org/packages/rstd-toml/rstd-toml-0.1.5.tar.zst"
   },
   {
     "dest": ".lito/source-bundle/v1/registry/source",
-    "dest-filename": "rstd-test-0.1.4-4432d0e0de3a2b00.tar.zst",
-    "sha256": "4432d0e0de3a2b00b612a69077a8d338c313a2cda55aa9943e320b4901a32bd0",
+    "dest-filename": "vvk-0.1.0-9feeb7d057f3fa4d.tar.zst",
+    "sha256": "9feeb7d057f3fa4da7ac2f05f5160fb51c9981aad58afda37da1644bef01b9b4",
     "type": "file",
-    "url": "https://registry.litocpp.org/packages/rstd-test/rstd-test-0.1.4.tar.zst"
-  },
-  {
-    "dest": ".lito/source-bundle/v1/registry/source",
-    "dest-filename": "rstd-toml-0.1.4-82128c3ea754e975.tar.zst",
-    "sha256": "82128c3ea754e975ef455412a9160c2862fbfa9e85ab10e183870403fb8fc31e",
-    "type": "file",
-    "url": "https://registry.litocpp.org/packages/rstd-toml/rstd-toml-0.1.4.tar.zst"
+    "url": "https://registry.litocpp.org/packages/vvk/vvk-0.1.0.tar.zst"
   },
   {
     "commit": "df1d282170dd1718b8aeff405638c18cedd435ca",
