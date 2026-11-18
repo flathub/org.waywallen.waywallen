@@ -76,14 +76,40 @@ modules:
     cleanup:
       - '*'
 
+  - name: lua5
+    cleanup:
+      - '*'
+    no-autogen: true
+    make-args:
+      - "MYCFLAGS=-fPIC -DLUA_USE_LINUX"
+      - linux
+    make-install-args:
+      - INSTALL_TOP=/app
+    post-install:
+      - make INSTALL_TOP=/app pc > lua5.pc
+      - cat lua5.pc.in >> lua5.pc
+      - install -Dm644 lua5.pc $FLATPAK_DEST/lib/pkgconfig/lua5.5.pc
+    sources:
+      - type: archive
+        url: https://www.lua.org/ftp/lua-5.5.1.tar.gz
+        sha256: 1c4b4068d67061f2a2231ad2b5422e77acea1487ea9890f6320af614f4373dce
+        x-checker-data:
+          type: anitya
+          project-id: 1847
+          url-template: https://www.lua.org/ftp/lua-$version.tar.gz
+          versions:
+            <: '5.6'
+      - type: file
+        path: lua5.pc.in
+
   - name: lito
     buildsystem: simple
     build-commands:
       - cp -a bin share /app/
     sources:
       - type: archive
-        url: https://github.com/litocpp/lito/releases/download/v0.8.8/lito-v0.8.8-linux-x86_64.tar.gz
-        sha256: d4c3d7548e44da0086b8f55901670a9ec31b4975d4713bef232cb0329a5e028d
+        url: https://github.com/litocpp/lito/releases/download/v0.8.9/lito-v0.8.9-linux-x86_64.tar.gz
+        sha256: 31884c0e853f644f4491bf3a58ee93a12d5513a9810cdeb0e00136cb87dbe610
         only-arches:
           - x86_64
         x-checker-data:
@@ -94,8 +120,8 @@ modules:
           url-query: '"https://github.com/litocpp/lito/releases/download/v" + $version
             + "/lito-v" + $version + "-linux-x86_64.tar.gz"'
       - type: archive
-        url: https://github.com/litocpp/lito/releases/download/v0.8.8/lito-v0.8.8-linux-aarch64.tar.gz
-        sha256: e01aa6483be7efedea884731fa9838b2e81a28ec8435488d4339c9aa4af33252
+        url: https://github.com/litocpp/lito/releases/download/v0.8.9/lito-v0.8.9-linux-aarch64.tar.gz
+        sha256: 9bbe75c495ff5b20a00d7eae9782d62d3df09b3e23d4c601d7c03a4378754415
         only-arches:
           - aarch64
         x-checker-data:
@@ -117,14 +143,14 @@ modules:
         CARGO_HOME: /run/build/waywallen/cargo
     build-commands:
       - lito install --profile relwithdebinfo --prefix /app --source-bundle .lito/source-bundle
-        --offline --locked
+        --offline
     sources:
       - type: git
         url: https://github.com/waywallen/waywallen.git
-        commit: 454e38ff3edc0dbc076fa4a57ee8e2e6e9c08a60
+        commit: eddac09fff363c7698746cb0307b13fc542c032f
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
           is-main-source: true
-        tag: v0.6.0
+        tag: v0.6.1
       - ./waywallen-lito.json
