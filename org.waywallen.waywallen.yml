@@ -147,10 +147,9 @@ modules:
     sources:
       - type: git
         url: https://github.com/waywallen/waywallen.git
-        commit: 7388d79be55d9520965819fcdd8176833b060eab
+        commit: fe2218d084926916ea64da9e1929d382f40ef416
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
           is-main-source: true
-        tag: v0.6.2
       - ./waywallen-lito.json
