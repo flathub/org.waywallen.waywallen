@@ -108,8 +108,8 @@ modules:
       - cp -a bin share /app/
     sources:
       - type: archive
-        url: https://github.com/litocpp/lito/releases/download/v0.8.9/lito-v0.8.9-linux-x86_64.tar.gz
-        sha256: 31884c0e853f644f4491bf3a58ee93a12d5513a9810cdeb0e00136cb87dbe610
+        url: https://github.com/litocpp/lito/releases/download/v0.8.13/lito-v0.8.13-linux-x86_64.tar.gz
+        sha256: 055399f009c95977e6727cce0b0f918bb3fbf51c9f806b5064ece459a31bfc4f
         only-arches:
           - x86_64
         x-checker-data:
@@ -120,8 +120,8 @@ modules:
           url-query: '"https://github.com/litocpp/lito/releases/download/v" + $version
             + "/lito-v" + $version + "-linux-x86_64.tar.gz"'
       - type: archive
-        url: https://github.com/litocpp/lito/releases/download/v0.8.9/lito-v0.8.9-linux-aarch64.tar.gz
-        sha256: 9bbe75c495ff5b20a00d7eae9782d62d3df09b3e23d4c601d7c03a4378754415
+        url: https://github.com/litocpp/lito/releases/download/v0.8.13/lito-v0.8.13-linux-aarch64.tar.gz
+        sha256: c6eef42f07675b5ce2d2ec7f81b5b1eee7f7387fece7a8aeab3f0e0689216431
         only-arches:
           - aarch64
         x-checker-data:
@@ -147,10 +147,10 @@ modules:
     sources:
       - type: git
         url: https://github.com/waywallen/waywallen.git
-        commit: eddac09fff363c7698746cb0307b13fc542c032f
+        commit: 7388d79be55d9520965819fcdd8176833b060eab
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
           is-main-source: true
-        tag: v0.6.1
+        tag: v0.6.2
       - ./waywallen-lito.json
